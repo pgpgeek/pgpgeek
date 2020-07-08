@@ -8,7 +8,7 @@ $ = (el) => {
           return document.getElementsByClassName(el.substr(1, 50))
           break;
         default:
-          return document.getElementByTagName(el)
+          return document.getElementsByTagName(el)
           break;
       }
     }

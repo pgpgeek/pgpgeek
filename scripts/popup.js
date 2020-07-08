@@ -77,6 +77,8 @@ let displaySettings = function () {
     let public_keys_select = $('#encrypt_select_public_key');
     let private_keys_select = $('#decrypt_select_private_key');
     keys_tab.textContent = '';
+    private_keys_select.textContent = '';
+    public_keys_select.textContent = '';
     $('#new_key_name').value = '';
     $('#new_key').value = '';
     for (var i in keyM.keys) {
