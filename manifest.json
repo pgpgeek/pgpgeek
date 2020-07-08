@@ -11,13 +11,13 @@
         }
     },
     "browser_action": {
-        "default_popup": "popup.html",
+        "default_popup": "views/popup.html",
         "default_title": "PGPGeek",
         "default_icon": "images/internet-32px.png"
     },
     "compose_action": {
-        "default_icon": "popup.html",
-        "default_popup": "popup.html",
+        "default_icon":  "images/internet-32px.png",
+        "default_popup": "views/popup.html",
         "default_title": "Encrypt / Decrypt PGP Message"
     },
     "background": {
