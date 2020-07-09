@@ -47,7 +47,6 @@ const decryptFunction = async () => {
         tabId,
         message
       });
-      return encrypted
     });
   });
 }
@@ -179,7 +178,7 @@ let generateNewPrivateKey = function () {
       name: $('#new_private_key_block_generate_name').value,
       email: $('#new_private_key_block_generate_email').value
     }],
-    curve: 'ed25519',
+    numBits: 4096,
     passphrase: $('#new_private_key_block_generate_passphrase').value
   };
   openpgp.generateKey(options).then(function (key) {
