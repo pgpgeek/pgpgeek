@@ -3,8 +3,8 @@ window.onload = function () {
   const pgpStorage = new PgpStorage;
 
   // Generate the Public Key from Private Key
-  let generateAndAddPublicKey = async () => {
-    let privateKey = $('#decrypt_select_private_key').value,
+  const generateAndAddPublicKey = async () => {
+    const privateKey = $('#decrypt_select_private_key').value,
       passPhrase = $('#decrypt_passphrase').value;
     pgpMaster.generatePublicKey(privateKey, passPhrase).then(pubKey => {
       copyClipboard(pubKey);
@@ -13,8 +13,8 @@ window.onload = function () {
   }
 
   //Generate the Private Key
-  let generateNewPrivateKey = function () {
-    let name = $('#new_private_key_block_generate_name').value,
+  const generateNewPrivateKey = function () {
+    const name = $('#new_private_key_block_generate_name').value,
       email = $('#new_private_key_block_generate_email').value,
       passPhrase = $('#new_private_key_block_generate_passphrase').value;
     if (name < 5 || email < 5 || passPhrase < 5) return -1;
@@ -25,7 +25,7 @@ window.onload = function () {
 
   // Encrypt Text
   const encryptFunction = async () => {
-    let publicKey = $('#encrypt_select_public_key').value;
+    const publicKey = $('#encrypt_select_public_key').value;
     pgpMaster.getTextCompose(true).then(text => {
       pgpMaster.encrypt(text, publicKey).then((msg) => pgpMaster.sendMessage(msg));
     });
@@ -33,7 +33,7 @@ window.onload = function () {
 
   // Decrypt Text
   const decryptFunction = async () => {
-    let privateKey = $('#decrypt_select_private_key').value,
+    const privateKey = $('#decrypt_select_private_key').value,
       passPhrase = $('#decrypt_passphrase').value;
     pgpMaster.getTextCompose().then(text => {
       console.log(text);
@@ -42,23 +42,24 @@ window.onload = function () {
   };
 
   const addNewKey = function () {
-    let keyName = $('#new_key_name').value,
+    const keyName = $('#new_key_name').value,
       keyValue = $('#new_key').value,
       keyType = $('#new_type_key').value;
     pgpStorage.addKey(keyName, keyValue, keyType);
     if (keyName < 3 || keyValue < 50 || keyType < 3) return -1;
     setTimeout(() => displaySettings(pgpStorage), 200);
-  }
+  };
+
+  const displayNewPrivateKeyOption = function (evt) {
+    $('#new_private_key_block').setAttribute('style', evt.target.value === 'private' ? 'display:block' : '')
+  };
+
+  const displayNewPrivateKeyOptionGenerate = function (evt) {
+    $('#new_private_key_block_enable').setAttribute('style', evt.target.checked ? 'display:block' : '')
+  };
+
 
   $('#add_new_key_button').addEventListener('click', addNewKey);
-
-  let displayNewPrivateKeyOption = function (evt) {
-    $('#new_private_key_block').setAttribute('style', evt.target.value === 'private' ? 'display:block' : '')
-  }
-
-  let displayNewPrivateKeyOptionGenerate = function (evt) {
-    $('#new_private_key_block_enable').setAttribute('style', evt.target.checked ? 'display:block' : '')
-  }
   $('#crypt').addEventListener('click', encryptFunction);
   $('#decrypt').addEventListener('click', decryptFunction);
   $('#new_private_key_block_generate_checkbox').addEventListener('click', displayNewPrivateKeyOptionGenerate);
