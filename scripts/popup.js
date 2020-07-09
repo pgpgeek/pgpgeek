@@ -48,7 +48,7 @@ window.onload = function () {
       keyType = $('#new_type_key').value;
     pgpStorage.addKey(keyName, keyValue, keyType);
     if (keyName < 3 || keyValue < 50 || keyType < 3) return -1;
-    setTimeout(() => displaySettings(pgpStorage), 200);
+    setTimeout(() => displaySettings(pgpMaster, pgpStorage), 200);
   };
 
   // Private Key Display some options 
@@ -69,5 +69,5 @@ window.onload = function () {
   $('#new_type_key').addEventListener('click', displayNewPrivateKeyOption);
   $('#generate_public_key_to_mail').addEventListener('click', generateAndAddPublicKey);
   $('#new_private_key_block_generate_button').addEventListener('click', generateNewPrivateKey);
-  displaySettings(pgpStorage);
+  displaySettings(pgpMaster, pgpStorage);
 };

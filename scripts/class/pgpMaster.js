@@ -12,13 +12,13 @@ class PgpMaster {
     }
   
     getTextCompose(encrypt) {
-      return new Promise((res) => {
+      return new Promise((res, err) => {
         this.getTabId().then(tabId => {
           browser.compose.getComposeDetails(tabId).then(async (details) => {
             if (encrypt)
                 return res(details.isPlainText ? details.plainTextBody : details.body);
             return res((new DOMParser().parseFromString(details.body, 'text/html')).body.textContent);
-          });
+          }).catch(err);
         });
       });
     }
