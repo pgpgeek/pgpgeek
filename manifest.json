@@ -2,7 +2,7 @@
     "manifest_version": 2,
     "name": "PGPGeek",
     "description": "Quick & easy PGP encryption / decryption tool",
-    "version": "1.4",
+    "version": "1.5",
     "author": "dave-hill@dyrk.org",
     "applications": {
         "gecko": {

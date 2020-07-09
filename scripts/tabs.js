@@ -9,3 +9,6 @@ displayTab = function(id){
     $(id).setAttribute('class', 'inactiveTab activeClass');
 };
 
+$('#actions-tab').addEventListener('click',     displayTab.bind(null,   '#box-actions'));
+$('#settings-tab').addEventListener('click',    displayTab.bind(null,   '#box-settings'));
+$('#others-tab').addEventListener('click',      displayTab.bind(null,   '#box-others'));
