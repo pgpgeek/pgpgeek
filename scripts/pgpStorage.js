@@ -15,8 +15,6 @@ class PgpStorage {
                 key: key,
                 type: keyType,
             };
-            if (newKey.name.length < 5 || newKey.key.length < 5)
-                return null;
             keyM.keys.push(newKey);
             browser.storage.local.set(keyM);
         });
