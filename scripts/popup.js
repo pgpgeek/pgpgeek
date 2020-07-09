@@ -41,6 +41,7 @@ window.onload = function () {
     });
   };
 
+  // Add a new Private / Public Key
   const addNewKey = function () {
     const keyName = $('#new_key_name').value,
       keyValue = $('#new_key').value,
@@ -50,10 +51,12 @@ window.onload = function () {
     setTimeout(() => displaySettings(pgpStorage), 200);
   };
 
+  // Private Key Display some options 
   const displayNewPrivateKeyOption = function (evt) {
     $('#new_private_key_block').setAttribute('style', evt.target.value === 'private' ? 'display:block' : '')
   };
 
+  // Private Key Display full options
   const displayNewPrivateKeyOptionGenerate = function (evt) {
     $('#new_private_key_block_enable').setAttribute('style', evt.target.checked ? 'display:block' : '')
   };
