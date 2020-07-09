@@ -7,8 +7,9 @@
 let displaySettings = function (pgpMaster, pgpStorage) {
   // if not a compose Window, hide Encrypt / Decrypt options
   pgpMaster.getTextCompose().catch(() => {
-    $('#actions-tab').setAttribute('style', 'display:none');
-    $('#settings-tab').click();
+    $('#decrypt_full_description').setAttribute('style', 'display:none');
+    $('#encryption_block').setAttribute('style', 'display:none');
+    $('#decrypt').setAttribute('style', 'display:none');
   })
 
   pgpStorage.getKeys().then(keyM => {
