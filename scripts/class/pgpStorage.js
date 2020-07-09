@@ -19,7 +19,7 @@ class PgpStorage {
             browser.storage.local.set(keyM);
         });
     }
-    delKey = function (idx) {
+    delKey(idx) {
         this.getKeys().then(keyM => {
             delete keyM.keys[idx];
             // re-index
